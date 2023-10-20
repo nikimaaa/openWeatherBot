@@ -22,7 +22,6 @@ const mapIconToSmile = {
 }
 
 const getWeatherDescription = (location, weather) => {
-    console.log(new Date(weather.sys.sunrise))
     let res = `${location.name}\n`;
     res += `${mapIconToSmile[weather.weather[0].icon]} ${weather.weather[0].description}\n`
     res += `🌡️ Текущая температура: ${weather.main.temp}\n`;
@@ -30,6 +29,8 @@ const getWeatherDescription = (location, weather) => {
     res += `🔺 Максимальная температура: ${weather.main.temp_max}\n`;
     res += `🔻 Минимальная температура: ${weather.main.temp_min}\n\n`;
 
+    res += `👁️ Видимость: ${Math.ceil(weather.visibility / 1000)}км\n`
+    res += `☁️ Облачность: ${weather.clouds.all}%\n`
     res += `💧 Влажность: ${weather.main.humidity}%\n`
     res += `🗜 Давление: ${weather.main.pressure}гПа\n`
     res += `🍃 Скорость ветра: ${weather.main.humidity}м/с\n\n`
